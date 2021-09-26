@@ -12,9 +12,9 @@ drive him through a web portal.  Maybe give it a bit of autonomy?
 Baby steps first. I could try to control the movement directly but looking
 through the old [remote control codes](src/RoboSapien Codes.md) and a fairly well matched controller, it would 
 seem that a high level conroller is all that is needed.  We shall see.  I'll start
-using an Arduino which is electrically easy to control and interface.  Sorry, about my pal
+using an Arduino which is electrically easy to control and interface.  Sorry, about my pal's image.
 I left is pants off so I could monitor a repair I had to effect on his erector spinae springs.
-spinal muscular surgery isn't my thing. But they seem to be holding up.  We'll see if I can get him
+Spinal muscular surgery isn't my thing, but they seem to be holding up.  We'll see if I can get him
 back into break dancing shape later.
 
 

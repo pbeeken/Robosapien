@@ -17,5 +17,12 @@ I left is pants off so I could monitor a repair I had to effect on his erector s
 Spinal muscular surgery isn't my thing, but they seem to be holding up.  We'll see if I can get him
 back into break dancing shape later.
 
+## Async Serial Control
+
+With an oscilloscope and some finagling I managed to send coherent control signals to the 
+IR signal line to command the available routines in the master control.  This seems to be the
+most flexible way to manage the robot.  I found I needed a 100$\Omega$ resistor to feed in the signal
+at the connector point or the 5V high signal partially powered the eyes.
+
 
 

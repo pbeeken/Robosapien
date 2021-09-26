@@ -25,9 +25,9 @@ void loop() {
         
         digitalWrite(MARK, HIGH);
         cc = Serial.read() & 0xFF;
-        if (cc == 'S')      command = stop;
-        else if (cc == 'U') command = right_arm_up;
-        else if (cc == 'D') command = right_arm_down;
+        if (cc == 'S')      command = Demo_1;
+        else if (cc == 'U') command = Demo_2;
+        else if (cc == 'D') command = Dance;
         else command = 0x00;
 
         Serial << "Cmd ["<< _BYTE(cc) <<"] complete : 0x" << _HEX(command) << endl;

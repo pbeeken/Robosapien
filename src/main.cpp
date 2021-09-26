@@ -25,11 +25,23 @@ void loop() {
         
         digitalWrite(MARK, HIGH);
         cc = Serial.read() & 0xFF;
-        if (cc == 'S')      command = Demo_1;
-        else if (cc == 'U') command = Demo_2;
-        else if (cc == 'D') command = Dance;
-        else command = 0x00;
+        switch(cc) {
+            case '1': command = Demo_1;     break;
+            case '2': command = Demo_2;     break;
+            case 'D': command = Dance;      break;
+            case 'B': command = bulldozer;  break;
+            case 'W': command = Wakeup;     break;
+            case 'Z': command = Power_Off;  break;
+            case 'S': command = sleep;      break;
 
+            case '4': command = high_5;     break;
+            case '5': command = listen;     break;
+            case '6': command = burp;       break;
+            case '7': command = oops;       break;
+            case '8': command = talkback;   break;
+            case '9': command = whistle;    break;
+            default:  command = 0x00;
+        }
         Serial << "Cmd ["<< _BYTE(cc) <<"] complete : 0x" << _HEX(command) << endl;
 
         Command.shiftOut(command);

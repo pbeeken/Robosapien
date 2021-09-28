@@ -15,6 +15,7 @@ void setup() {
    Command.begin();
 }
 
+// This is the basic test bench for the control of the RoboSapien.
 // Test with shiftOut which triggers at ~80kHz  We need it to fire at 1.5 kHz
 // Copy the internal version and slow it down.
 void loop() {

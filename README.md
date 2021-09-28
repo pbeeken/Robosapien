@@ -24,5 +24,9 @@ IR signal line to command the available routines in the master control.  This se
 most flexible way to manage the robot.  I found I needed a 100$\Omega$ resistor to feed in the signal
 at the connector point or the 5V high signal partially powered the eyes.
 
+## I2C Control
 
-
+ATTiny85 are my new go to device. Since I, ultimately, want to control the Robotsapien with 
+a RaspPi I need an interface that can handle 3.3V signals as well as 5V. Using the ATTiny85 
+as an I2C Slave is probably the most flexible way to do this. I have a seperate project for
+these experiments but it's pretty easy to develop the device.

@@ -20,16 +20,15 @@ class SapienSignal {
 
 private:
     uint8_t dataPin;
-    uint8_t markPin;
-
+    uint8_t markPin; // for debugging
 
 public:
     /**
      * Establish the pins. dataPin and clockPin are required
      * markPin is for enveloping the signal for debugging. 
-     * clockPin is equally redundant. We only use an async dataPin
+     * Leave as -1 for disuse. 
      **/
-    SapienSignal(uint8_t dataPin, uint8_t markPin=0);
+    SapienSignal(uint8_t dataPin, uint8_t markPin=-1);
 
     void begin();
     void shiftOut(uint8_t val);

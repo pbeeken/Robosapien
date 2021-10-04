@@ -26,7 +26,17 @@ at the connector point or the 5V high signal partially powered the eyes.
 
 ## I2C Control
 
-ATTiny85 are my new go to device. Since I, ultimately, want to control the Robotsapien with 
+ATTiny85 are my new go-to device. Since I, ultimately, want to control the Robotsapien with 
 a RaspPi I need an interface that can handle 3.3V signals as well as 5V. Using the ATTiny85 
 as an I2C Slave is probably the most flexible way to do this. I have a seperate project for
 these experiments but it's pretty easy to develop the device.
+
+## Success
+By moving the RoboSap Commands to the loop (never was going to work inside the ISRs) I can send commands
+using I2C 2 byte commands. I also have access to a bicolor LED for some additional signalling. The major hiccup
+was getting the timing off the ATTiny85 to work right. Surprise! microsecond delay is a little off.  Even the 
+UNO test platform was about 8% off. The ATTiny was off by almost 35% which brought it out of range for the 
+controller in the RoboSap to recognize.  Adjusting the base timing frequency used in the signalling routine
+solved the problem.  I plan to start another project to build an I2C controller for the WS2812s.  Oooh googly eyes?
+
+By adding peripherals using I2C I can put all kinds of things on my little friend.

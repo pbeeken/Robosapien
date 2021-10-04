@@ -45,6 +45,7 @@ void loop() {
                 case '7': command[1] = oops;       break;
                 case '8': command[1] = talkback;   break;
                 case '9': command[1] = whistle;    break;
+                case '0': command[1] = stop;       break;
                 default:  command[1] = 0x00;
                 }
             Serial << "Cmd ["<< _BYTE(command[0]) <<"] complete : 0x" << _HEX(command[1]) << endl;

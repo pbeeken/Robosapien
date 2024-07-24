@@ -3,7 +3,7 @@
 
 /**
  * Establish the pins. dataPin and clockPin are required
- * markPin is for enveloping the signal for debugging. 
+ * markPin is for echoing signal reception (led flash) for debugging.
  * clockPin is equally redundant. We only use an async dataPin
  **/
 SapienSignal::SapienSignal(uint8_t dataPin, uint8_t markPin) {

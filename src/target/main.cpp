@@ -1,3 +1,10 @@
+/***
+ * This file is intended to be run on an attiny85 @ 8MHz. It provides
+ * an effective level controller from either a 5V arduino or a 3.3V pico
+ * It's job is to receive I2C codes from a controller turn them into 1 byte
+ * commands for the robot.
+ */
+
 #include <Arduino.h>
 
 #define I2C_PERIPH_ADDRESS 0x14 // the 7-bit address (remember to change this when adapting this example)
@@ -21,7 +28,7 @@ void receiveEvent(uint8_t howMany);
 
 // Incoming messages
 volatile uint8_t i2c_regs[] = {'-', '-',};
-// Commands are always 2 bytes, a character 
+// Commands are always 2 bytes, a character
 //  'C' command and a byte which is the IR command to send to RoboSapien
 //  'F' command to flash the LED (mostly for debugging) or for decoration
 //
@@ -48,12 +55,12 @@ void setup() {
     Command.begin(); // do this before setting up interrupts.
 
     /**
-     * Reminder: taking care of pull-ups is the masters job
+     * Reminder: taking care of pull-ups is the controlers job
      */
     TinyWireS.begin(I2C_PERIPH_ADDRESS);
     TinyWireS.onReceive(receiveEvent);
     TinyWireS.onRequest(requestEvent);
-    
+
     // blink the LED to indicate we are ready.
     blink(RED, 4);
     blink(GRN, 4);
@@ -98,7 +105,7 @@ void loop() {
 
 /**
  * blink controlling led to indicate state
- * bi-colored LED alliows 3 colors. 
+ * bi-colored LED alliows 3 colors.
  *  All pins are low moving into this routine.
  *  RED (flash pin 1) GREEN (flash pin 2)
  * This may be removed if it takes up too time for good I2C communication.
@@ -119,10 +126,10 @@ void blink(uint8_t color, uint8_t blinks) {
 
 
 /**
- * This is called for each read request we receive, never put more than one byte of data (with TinyWireS.send) 
+ * This is called for each read request we receive, never put more than one byte of data (with TinyWireS.send)
  * to the send-buffer when using this callback
  */
-void requestEvent() { 
+void requestEvent() {
     TinyWireS.send(i2c_regs[0]); // send last command gotten
     state = RESPOND;
 }
@@ -143,7 +150,7 @@ void receiveEvent(uint8_t howMany) {
 
     // successive reads don't work. need to do this asyncronously
     // if (howMany > 0) {
-    //     i2c_regs[reg_position] = TinyWireS.receive(); 
+    //     i2c_regs[reg_position] = TinyWireS.receive();
     //     i2c_regs[1] = TinyWireS.receive();
     // }
 
@@ -156,7 +163,7 @@ void receiveEvent(uint8_t howMany) {
     //         if (i2c_regs[0] == 'C')
     //             state = SEND_COMMAND;
     //         if (i2c_regs[0] == 'F')
-    //             state = FLASH_LED;        
+    //             state = FLASH_LED;
     //         }
     //     }
 

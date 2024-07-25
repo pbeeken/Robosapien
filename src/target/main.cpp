@@ -17,10 +17,10 @@
 #endif
 
 // Demonstration code for shiftOut
-int MARK = PB5;
+//int MARK = PB5;  // Don't use this it is a reset.
 int IRDATA = PB1;
 
-SapienSignal Command(IRDATA, MARK);
+SapienSignal Command(IRDATA);
 
 // Declarations
 void requestEvent();
@@ -39,8 +39,8 @@ const byte reg_size = sizeof(i2c_regs);
 
 // Signalling
 void blink(uint8_t color, uint8_t blinks=2);
-const uint8_t RED = 0x43;  // PB4<<8 + PB3;
-const uint8_t GRN = 0x34;  // PB3<<8 + PB4;
+const uint8_t RED = 0x33;  // PB3<<8 + PB3;
+const uint8_t GRN = 0x44;  // PB4<<8 + PB4;
 
 /**
  * Setup the pins on power up
@@ -121,7 +121,7 @@ void blink(uint8_t color, uint8_t blinks) {
         tws_delay(75);
     }
     digitalWrite(color & 0x0F, LOW);
-    digitalWrite((color & 0xF0) >> 4, LOW);
+    //digitalWrite((color & 0xF0) >> 4, LOW);
 }
 
 
@@ -144,7 +144,7 @@ void receiveEvent(uint8_t howMany) {
     // In DEMO program, may or may not be necessary
     if (howMany < 1 || howMany > TWI_RX_BUFFER_SIZE) {
         // Sanity-check
-        //  state = IDLE;
+        state = IDLE;
         return;
     }
 

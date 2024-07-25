@@ -20,14 +20,6 @@ const uint8_t tilt_body_left      = 0x8B;   // - tilt body left
 
 const uint8_t right_arm_up        = 0x81;   // - right arm up (upper left button on remote)
 const uint8_t right_arm_out       = 0x82;   // - right arm out
-const uint8_t right_arm_down      = 0x84;   // - right arm down
-const uint8_t right_arm_in        = 0x85;   // - right arm in
-const uint8_t left_arm_up         = 0x89;   // - left arm up (upper right button on remote)
-const uint8_t left_arm_out        = 0x8A;   // - left arm out
-const uint8_t left_arm_down       = 0x8C;   // - left arm down
-const uint8_t left_arm_in         = 0x8D;   // - left arm in
-
-const uint8_t right_hand_thump    = 0xA1;	// - right hand thump
 const uint8_t right_hand_throw    = 0xA2;	// - right hand throw
 const uint8_t left_hand_thump	  = 0xA9;	// - left hand thump
 const uint8_t left_hand_throw	  = 0xAA;	// - left hand throw
